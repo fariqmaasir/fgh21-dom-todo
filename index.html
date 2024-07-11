@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        position: relative;
+        display: flex;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgba(91, 116, 226, 255);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10vh;
+      }
+      .form-todo {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: rgb(2, 2, 2, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .form-todo.hide {
+        display: none;
+      }
+      .form-todo > form {
+        width: 300px;
+        height: 200px;
+        background-color: white;
+        border-radius: 20px;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: center; */
+      }
+      .form-todo > form > div {
+        padding: 10px 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .form-todo > form > div > div:first-child {
+        width: 250px;
+        height: 30px;
+        border: 1px solid black;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .form-todo > form > div > div:first-child > input {
+        border: transparent;
+      }
+
+      .content {
+        padding: 50px;
+        border-radius: 20px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .control {
+        /* display: flex; */
+        align-items: center;
+        justify-content: space-between;
+      }
+      .control > div:first-child {
+        display: flex;
+        gap: 100px;
+        align-items: center;
+      }
+      .control > div:last-child {
+        color: rgba(91, 116, 226, 255);
+        padding-bottom: 30px;
+        font-weight: bold;
+      }
+      .control > div:first-child > div:first-child {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .control > div:first-child > button {
+        color: white;
+        font-size: 20px;
+        background-color: rgba(91, 116, 226, 255);
+        border: none;
+        padding: 15px 20px;
+        border-radius: 50%;
+      }
+      .todo {
+        padding-top: 20px;
+      }
+      .todo,
+      .todo > div:first-child {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        justify-content: space-between;
+      }
+      .todo > div:last-child {
+        font-size: 12px;
+        color: rgb(211, 211, 211);
+      }
+      hr {
+        margin-right: 0;
+        width: 80%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div id="control" class="control">
+        <div>
+          <div>Wednesday, 22 Nov</div>
+          <button id="addData" type="button">+</button>
+        </div>
+        <div>3 tasks</div>
+      </div>
+      <div id="to-do-list">
+        <div class="todo">
+          <div>
+            <input id="list1" type="checkbox" name="" id="" />
+            <label for="list1">Morning walk</label>
+          </div>
+          <div>7.00 AM</div>
+        </div>
+        <hr />
+        <div class="todo">
+          <div>
+            <input id="list2" type="checkbox" name="" id="" />
+            <label for="list2">Meeting with John Doe</label>
+          </div>
+          <div>9.30 AM</div>
+        </div>
+        <hr />
+        <div class="todo">
+          <div>
+            <input id="list3" type="checkbox" name="" id="" />
+            <label for="list3">Buy Pizza from Pizzahut</label>
+          </div>
+          <div>11.00 AM</div>
+        </div>
+        <hr />
+      </div>
+    </div>
+    <div id="div-todo" class="form-todo hide">
+      <form id="form-todo">
+        <div>
+          <label for="input-todo">What you want to do?</label>
+          <div>
+            <input id="input-todo" name="doData" type="text" />
+          </div>
+          <div>
+            <button type="submit">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script>
+      const btn = document.getElementById("addData");
+      const id = document.getElementById("div-todo");
+      const form = document.getElementById("form-todo");
+      const list = document.getElementById("to-do-list");
+      const control = document.getElementById("control");
+      let data = [
+        { text: "TEST", timestamp: 1720703799565, finish: false },
+        { text: "TEST", timestamp: 1720703799565, finish: false },
+      ];
+      const checkData = window.localStorage.getItem("DATA");
+      if (JSON.parse(checkData) !== null) {
+        data = JSON.parse(checkData);
+      }
+      const setDate = new Date().getTime();
+      console.log(setDate);
+      (() => {
+        const div = document.createElement("div");
+        const date = document.createElement("div");
+        const button = document.createElement("button");
+        const tasks = document.createElement("div");
+        date.textContent = "makan";
+      })();
+      function displayData() {
+        list.innerHTML = "";
+        data.forEach((item, index) => {
+          const divToDo = document.createElement("div");
+          const divToDoList = document.createElement("div");
+          const input = document.createElement("input");
+          const label = document.createElement("label");
+          const time = document.createElement("div");
+          const hr = document.createElement("hr");
+          divToDo.setAttribute("class", "todo");
+          input.setAttribute("id", "list" + (index + 1));
+          input.setAttribute("type", "checkbox");
+          label.setAttribute("for", "list" + (index + 1));
+          label.textContent = item.text;
+          divToDoList.appendChild(input);
+          divToDoList.appendChild(label);
+          const times = new Date(item.timestamp);
+          time.textContent =
+            times > 12
+              ? (times.getHours() % 12) + ":" + times.getMinutes() + " PM"
+              : times.getHours() + ":" + times.getMinutes() + " AM";
+          divToDo.appendChild(divToDoList);
+          divToDo.appendChild(time);
+          list.appendChild(divToDo);
+          list.appendChild(hr);
+        });
+      }
+      displayData();
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const text = event.target.doData.value;
+        if (text === "") {
+          window.alert("Reminder has not been filled in");
+          return;
+        }
+        const rawData = {
+          text,
+          timestamp: new Date().getTime(),
+          finish: false,
+        };
+        data.push(rawData);
+        console.log(data);
+        id.classList.toggle("hide");
+        form.reset();
+        window.localStorage.setItem("DATA", JSON.stringify(data));
+        displayData();
+      });
+      btn.addEventListener("click", (event) => {
+        id.classList.toggle("hide");
+      });
+      id.addEventListener("click", (event) => {
+        id.classList.toggle("hide");
+      });
+      form.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
+    </script>
+  </body>
+</html>
