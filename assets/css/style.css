@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  position: relative;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgba(91, 116, 226, 255);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10vh;
+}
+.form-todo {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgb(2, 2, 2, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-todo.hide {
+  display: none;
+}
+.form-todo > form {
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  border-radius: 20px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+.form-todo > form > div {
+  padding: 10px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-todo > form > div > div:first-child {
+  width: 250px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.form-todo > form > div > div:first-child > input {
+  border: transparent;
+}
+
+.content {
+  padding: 50px 150px;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.control {
+  /* display: flex; */
+  align-items: center;
+  justify-content: space-between;
+}
+.control > div:first-child {
+  display: flex;
+  gap: 100px;
+  align-items: center;
+}
+.control > div:last-child {
+  color: rgba(91, 116, 226, 255);
+  padding-bottom: 30px;
+  font-weight: bold;
+}
+.control > div:first-child > div:first-child {
+  font-size: 24px;
+  font-weight: bold;
+}
+.control > div:first-child > button {
+  color: white;
+  font-size: 20px;
+  background-color: rgba(91, 116, 226, 255);
+  border: none;
+  padding: 15px 20px;
+  border-radius: 50%;
+}
+.todo {
+  padding-top: 20px;
+}
+.todo,
+.todo > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+}
+.todo > div:first-child > button {
+  border: none;
+  background-color: white;
+}
+.todo > div:last-child {
+  font-size: 12px;
+  color: rgb(211, 211, 211);
+}
+hr {
+  margin-right: 0;
+  width: 60%;
+}
